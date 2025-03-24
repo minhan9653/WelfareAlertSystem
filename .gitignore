@@ -1,0 +1,48 @@
+# Build results
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.csproj.user
+
+# Rider files
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# NuGet packages
+*.nupkg
+packages/
+*.snupkg
+
+# Logs
+*.log
+
+# User-specific files
+*.userprefs
+
+# Publish folders
+publish/
+out/
+
+# Local test databases
+*.mdf
+*.ldf
+
+# CSV or data files
+문서/서울시 1인가구 참여프로그램 현황.csv
+
+# Git-related backups
+*.orig
+
+# Others (optional)
+*.bak
+*.tmp
