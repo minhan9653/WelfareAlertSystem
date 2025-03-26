@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace WelfareAlertSystem
+namespace GyeotaeAdmin
 {
     /// <summary>
     /// Interaction logic for App.xaml
