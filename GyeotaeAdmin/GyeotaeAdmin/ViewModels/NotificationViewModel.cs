@@ -23,6 +23,7 @@ namespace GyeotaeAdmin.ViewModels
         public ICommand SendNotificationCommand { get; }
         public ICommand ShowSentUsersCommand { get; }
         public ICommand ExportToCsvCommand { get; }
+        public ICommand SaveToSQLiteCommand { get; }
 
 
 
