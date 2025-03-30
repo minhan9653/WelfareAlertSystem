@@ -16,6 +16,7 @@ namespace GyeotaeAdmin.ViewModels
     public class NotificationViewModel : ViewModelBase
     {
 
+
         private readonly CsvExportService _csvExportService;
         private readonly SharedDataService _sharedData;
         private readonly MatchingService _matchingService;
@@ -24,8 +25,6 @@ namespace GyeotaeAdmin.ViewModels
         public ICommand ShowSentUsersCommand { get; }
         public ICommand ExportToCsvCommand { get; }
         public ICommand SaveToSQLiteCommand { get; }
-
-
 
         public ObservableCollection<ProgramModel> Programs { get; set; } = new();
         public ObservableCollection<UserModel> Users { get; set; } = new();
@@ -49,21 +48,21 @@ namespace GyeotaeAdmin.ViewModels
         public NotificationViewModel(
             SharedDataService sharedData,
             MatchingService matchingService,
-            INotificationService notificationService)  // 알림 서비스 주입
+            INotificationService notificationService,  // 알림 서비스 주입
+            CsvExportService csvExportService
+            )  // CsvExportService 주입
         {
             _sharedData = sharedData;
             _matchingService = matchingService;
             _notificationService = notificationService;  // 알림 서비스 초기화
-            _csvExportService = new CsvExportService();  // CsvExportService 인스턴스 생성
+            _csvExportService = csvExportService;  // CsvExportService 주입
 
             Programs = new ObservableCollection<ProgramModel>(_sharedData.Programs);
             Users = new ObservableCollection<UserModel>(_sharedData.Users);
 
             SendNotificationCommand = new RelayCommand(async () => await SendNotification());
             ExportToCsvCommand = new RelayCommand(() => ExportToCsv(SentUsers));  // 버튼 클릭 시 CSV 내보내기 실행
-
         }
-
         private void MatchUsers()
         {
             MatchedUsers.Clear();
@@ -95,7 +94,6 @@ namespace GyeotaeAdmin.ViewModels
         {
             _csvExportService.ExportToCsv(users);
         }
-
 
 
 
