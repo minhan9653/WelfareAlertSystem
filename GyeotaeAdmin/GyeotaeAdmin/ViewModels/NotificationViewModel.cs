@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,15 @@ namespace GyeotaeAdmin.ViewModels
 {
     public class NotificationViewModel : ViewModelBase
     {
+
+        private readonly CsvExportService _csvExportService;
         private readonly SharedDataService _sharedData;
         private readonly MatchingService _matchingService;
         private readonly INotificationService _notificationService; // 알림 서비스 추가
         public ICommand SendNotificationCommand { get; }
         public ICommand ShowSentUsersCommand { get; }
+        public ICommand ExportToCsvCommand { get; }
+
 
 
         public ObservableCollection<ProgramModel> Programs { get; set; } = new();
@@ -48,11 +53,13 @@ namespace GyeotaeAdmin.ViewModels
             _sharedData = sharedData;
             _matchingService = matchingService;
             _notificationService = notificationService;  // 알림 서비스 초기화
+            _csvExportService = new CsvExportService();  // CsvExportService 인스턴스 생성
 
             Programs = new ObservableCollection<ProgramModel>(_sharedData.Programs);
             Users = new ObservableCollection<UserModel>(_sharedData.Users);
 
             SendNotificationCommand = new RelayCommand(async () => await SendNotification());
+            ExportToCsvCommand = new RelayCommand(() => ExportToCsv(SentUsers));  // 버튼 클릭 시 CSV 내보내기 실행
 
         }
 
@@ -78,12 +85,19 @@ namespace GyeotaeAdmin.ViewModels
 
                 SentUsers.Add(user);  // 전송한 사용자 목록에 추가
 
-
             }
             OnPropertyChanged(nameof(MatchedUsers));
             OnPropertyChanged(nameof(SentUsers));  // 전송한 사용자 목록 갱신
-
         }
+
+        private void ExportToCsv(IEnumerable<UserModel> users)
+        {
+            _csvExportService.ExportToCsv(users);
+        }
+
+
+
+
 
 
     }

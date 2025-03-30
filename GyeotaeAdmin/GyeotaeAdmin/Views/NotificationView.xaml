@@ -26,7 +26,12 @@
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center" 
                     Width="100" Height="30"
-                    Margin="280,0,0,0"/>
+                    Margin="150,0,0,0"/>
+            <Button Content="CSV로 내보내기" 
+                    Command="{Binding ExportToCsvCommand}" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Width="100" Height="30"
+                    Margin="15,0,0,0"/>
 
 
         </StackPanel>
