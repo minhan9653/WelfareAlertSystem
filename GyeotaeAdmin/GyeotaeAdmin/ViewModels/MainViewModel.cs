@@ -52,10 +52,16 @@ namespace GyeotaeAdmin.ViewModels
 
             ShowMatchingViewCommand = new RelayCommand(() =>
             {
+                // 알림 서비스 구현체 인스턴스 생성 (여기서 알림 서비스 구현체를 사용)
+                INotificationService notificationService = new SmsNotificationService(); // SmsNotificationService 사용
+
+                // NotificationViewModel 생성 시 알림 서비스 주입
                 var viewModel = new NotificationViewModel(
                     SharedInstance.SharedData,
-                    new MatchingService()
+                    new MatchingService(),
+                    notificationService  // 알림 서비스 주입
                 );
+
                 var view = new NotificationView { DataContext = viewModel };
                 CurrentView = view;
             });
