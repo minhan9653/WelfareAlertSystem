@@ -11,7 +11,7 @@ namespace GyeotaeAdmin.Sevices
 {
     public class CsvExportService
     {
-        public void ExportToCsv(IEnumerable<UserModel> users)
+        public void ExportToCsv(IEnumerable<UserModel> users, ProgramModel _selectedProgram)
         {
             // SaveFileDialog를 사용하여 파일 저장 경로와 이름을 선택하게 함
             var saveFileDialog = new SaveFileDialog
@@ -31,7 +31,7 @@ namespace GyeotaeAdmin.Sevices
 
                 foreach (var user in users)
                 {
-                    csvContent.AppendLine($"{user.Name},{user.Phone},{user.IsNotified},{user.NotificationDate}");
+                    csvContent.AppendLine($"{user.Name},{user.Phone},{user.IsNotified},{user.NotificationDate},{_selectedProgram.Title}");
                 }
 
                 // 선택된 경로에 파일 저장

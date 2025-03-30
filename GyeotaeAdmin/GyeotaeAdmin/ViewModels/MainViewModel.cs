@@ -68,7 +68,7 @@ namespace GyeotaeAdmin.ViewModels
                 CurrentView = view;
             });
 
-            ShowNotificationViewCommand = new RelayCommand(() => CurrentView = "알림 및 매칭 화면입니다");
+            ShowNotificationViewCommand = new RelayCommand(() => CurrentView = "없어질 화면 ");
             ShowAttendanceViewCommand = new RelayCommand(() => CurrentView = "참여 이력 화면입니다");
             ShowReportViewCommand = new RelayCommand(() => CurrentView = "통계/보고서 화면입니다");
             ShowSuggestionViewCommand = new RelayCommand(() => CurrentView = "AI 제안 화면입니다");

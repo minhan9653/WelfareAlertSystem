@@ -61,7 +61,7 @@ namespace GyeotaeAdmin.ViewModels
             Users = new ObservableCollection<UserModel>(_sharedData.Users);
 
             SendNotificationCommand = new RelayCommand(async () => await SendNotification());
-            ExportToCsvCommand = new RelayCommand(() => ExportToCsv(SentUsers));  // 버튼 클릭 시 CSV 내보내기 실행
+            ExportToCsvCommand = new RelayCommand(() => ExportToCsv(SentUsers, _selectedProgram));  // 버튼 클릭 시 CSV 내보내기 실행
         }
         private void MatchUsers()
         {
@@ -90,9 +90,9 @@ namespace GyeotaeAdmin.ViewModels
             OnPropertyChanged(nameof(SentUsers));  // 전송한 사용자 목록 갱신
         }
 
-        private void ExportToCsv(IEnumerable<UserModel> users)
+        private void ExportToCsv(IEnumerable<UserModel> users, ProgramModel _selectedProgram)
         {
-            _csvExportService.ExportToCsv(users);
+            _csvExportService.ExportToCsv(users, _selectedProgram);
         }
 
 
