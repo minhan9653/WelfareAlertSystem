@@ -11,5 +11,7 @@ namespace GyeotaeAdmin.Sevices
     {
         public List<ProgramModel> Programs { get; set; } = new();
         public List<UserModel> Users { get; set; } = new();
+
+        public List<RecommendationResult> RecommendationResults { get; set; } = new();
     }
 }

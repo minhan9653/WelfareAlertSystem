@@ -21,6 +21,8 @@ namespace GyeotaeAdmin.ViewModels
 {
     public class ParticipationViewModel : ViewModelBase
     {
+        private readonly SharedDataService _sharedData;
+
         private string _recommendMessage;
         public string RecommendMessage
         {
@@ -36,8 +38,9 @@ namespace GyeotaeAdmin.ViewModels
         public ICommand LoadFolderCommand { get; }
         public ICommand SuggestProgramsCommand { get; }
 
-        public ParticipationViewModel()
+        public ParticipationViewModel(SharedDataService sharedData)
         {
+            _sharedData = sharedData;
             LoadFilesCommand = new RelayCommand(LoadFiles);
             LoadFolderCommand = new RelayCommand(LoadFromFolder);
             SuggestProgramsCommand = new RelayCommand(SuggestPrograms);
@@ -108,6 +111,19 @@ namespace GyeotaeAdmin.ViewModels
             var trainingData = MlRecommender.ConvertToTrainingData(UsersParticipation);
             var model = MlRecommender.TrainModel(mlContext, trainingData);
             var suggestions = MlRecommender.PredictGlobalProgramInterest(mlContext, model, trainingData, 5);
+
+
+            _sharedData.RecommendationResults.Clear(); // 기존 추천 초기화
+
+            foreach (var (programName, score) in suggestions)
+            {
+                _sharedData.RecommendationResults.Add(new RecommendationResult
+                {
+                    ProgramName = programName,
+                    Score = score,
+                });
+            }
+
 
             var message = string.Join("\n", suggestions.Select(s => $"{s.itemId} → 예상 관심도: {s.averageScore:F2}"));
             //MessageBox.Show("📋 AI가 제안하는 추천 프로그램:\n\n" + message, "추천 프로그램 제안");

@@ -73,7 +73,8 @@ namespace GyeotaeAdmin.ViewModels
 
             ShowAttendanceViewCommand = new RelayCommand(() =>
             {
-                var viewModel = new ParticipationViewModel();
+                var viewModel = new ParticipationViewModel(
+                    SharedInstance.SharedData);
                 var view = new ParticipationView { DataContext = viewModel };
                 CurrentView = view; 
             });
