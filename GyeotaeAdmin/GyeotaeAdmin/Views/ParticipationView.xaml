@@ -11,22 +11,21 @@
     <Grid Margin="20">
         <DockPanel LastChildFill="True">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <Button Content="엑셀 불러오기"
+                <Button Content="엑셀 (파일단위) 불러오기"
                         Command="{Binding LoadFilesCommand}"
                         Height="40" Width="150" Margin="0,0,10,0"/>
 
+                <Button Content="엑셀 (폴더단위)불러오기"
+                     Command="{Binding LoadFolderCommand}"
+                     Height="40" Width="150" Margin="0,0,10,0"/>
+
+                
                 <Button Content="AI 추천 프로그램"
                         Command="{Binding SuggestProgramsCommand}"
                         Height="40" Width="180"/>
             </StackPanel>
 
-            <DataGrid ItemsSource="{Binding UsersParticipation}"
-                      AutoGenerateColumns="True"
-                      CanUserAddRows="False"
-                      IsReadOnly="True"
-                      Margin="0"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Auto"/>
+
         </DockPanel>
     </Grid>
 </UserControl>

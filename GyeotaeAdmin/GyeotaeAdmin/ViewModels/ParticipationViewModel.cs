@@ -14,6 +14,8 @@ using System.Windows.Input;
 using static GyeotaeAdmin.Sevices.ParticipationLoaderService;
 using Microsoft.ML;
 using GyeotaeAdmin.ML;
+using System.IO;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace GyeotaeAdmin.ViewModels
 {
@@ -21,11 +23,13 @@ namespace GyeotaeAdmin.ViewModels
     {
         public ObservableCollection<object> UsersParticipation { get; set; } = new();
         public ICommand LoadFilesCommand { get; }
+        public ICommand LoadFolderCommand { get; }
         public ICommand SuggestProgramsCommand { get; }
 
         public ParticipationViewModel()
         {
             LoadFilesCommand = new RelayCommand(LoadFiles);
+            LoadFolderCommand = new RelayCommand(LoadFromFolder);
             SuggestProgramsCommand = new RelayCommand(SuggestPrograms);
         }
 
@@ -40,6 +44,37 @@ namespace GyeotaeAdmin.ViewModels
             if (dialog.ShowDialog() == true)
             {
                 var records = ParticipationLoaderService.LoadMultipleFiles(dialog.FileNames);
+                var summary = ParticipationLoaderService.TransformToSummary(records);
+                var expanded = ParticipationTransformer.ToExpandoList(summary);
+
+                UsersParticipation.Clear();
+                foreach (var item in expanded)
+                    UsersParticipation.Add(item);
+            }
+        }
+
+        private void LoadFromFolder()
+        {
+            var folderDialog = new CommonOpenFileDialog
+            {
+                IsFolderPicker = true
+            };
+
+            if (folderDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                var folderPath = folderDialog.FileName;
+                // 중복 제거: Distinct() 사용 (하위 폴더 검색은 하지 않음)
+                var files = Directory.GetFiles(folderPath, "*.xlsx").Distinct().ToArray();
+
+                if (files.Length == 0)
+                {
+                    MessageBox.Show("폴더에 엑셀 파일이 없습니다.");
+                    return;
+                }
+
+                MessageBox.Show($"{files.Length}개의 엑셀 파일을 불러왔습니다.");
+
+                var records = ParticipationLoaderService.LoadMultipleFiles(files);
                 var summary = ParticipationLoaderService.TransformToSummary(records);
                 var expanded = ParticipationTransformer.ToExpandoList(summary);
 
