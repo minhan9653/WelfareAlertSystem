@@ -69,7 +69,15 @@ namespace GyeotaeAdmin.ViewModels
             });
 
             ShowNotificationViewCommand = new RelayCommand(() => CurrentView = "없어질 화면 ");
-            ShowAttendanceViewCommand = new RelayCommand(() => CurrentView = "참여 이력 화면입니다");
+
+
+            ShowAttendanceViewCommand = new RelayCommand(() =>
+            {
+                var viewModel = new ParticipationViewModel();
+                var view = new ParticipationView { DataContext = viewModel };
+                CurrentView = view; 
+            });
+
             ShowReportViewCommand = new RelayCommand(() => CurrentView = "통계/보고서 화면입니다");
             ShowSuggestionViewCommand = new RelayCommand(() => CurrentView = "AI 제안 화면입니다");
 
