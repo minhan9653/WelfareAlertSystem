@@ -61,9 +61,20 @@ namespace GyeotaeAdmin.Sevices
 
                 foreach (var program in allPrograms)
                 {
+                    // 현재 프로그램에 대한 참여 여부 확인
                     var record = group.FirstOrDefault(r => r.ProgramName == program);
-                    summary.ProgramParticipation[program] =
-                        (record != null && record.Participation.Trim().ToUpper() == "O") ? 1 : 0;
+
+                    if (record != null)
+                    {
+                        // 참여 여부가 "O"이면 1, 아니면 0
+                        summary.ProgramParticipation[program] =
+                            record.Participation.Trim().ToUpper() == "O" ? 1 : 0;
+                    }
+                    else
+                    {
+                        // 추천되지 않은 프로그램에 대해 null로 설정
+                        summary.ProgramParticipation[program] = null;
+                    }
                 }
 
                 summaries.Add(summary);
@@ -72,6 +83,7 @@ namespace GyeotaeAdmin.Sevices
             return summaries;
         }
     }
+
 
     public static class ParticipationTransformer
     {

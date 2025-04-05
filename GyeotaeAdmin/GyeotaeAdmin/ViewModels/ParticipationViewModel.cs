@@ -95,7 +95,9 @@ namespace GyeotaeAdmin.ViewModels
 
                 UsersParticipation.Clear();
                 foreach (var item in expanded)
-                    UsersParticipation.Add(item);
+                UsersParticipation.Add(item);
+
+
             }
         }
 

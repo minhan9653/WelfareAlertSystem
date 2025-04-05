@@ -10,6 +10,6 @@ namespace GyeotaeAdmin.Models
     {
         public string Name { get; set; }
         public string Phone { get; set; }
-        public Dictionary<string, int> ProgramParticipation { get; set; } = new();
+        public Dictionary<string, int?> ProgramParticipation { get; set; } = new();
     }
 }
