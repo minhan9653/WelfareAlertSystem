@@ -12,31 +12,16 @@ namespace GyeotaeAdmin
     /// </summary>
     public partial class App : Application
     {
-        public App()
+        protected override void OnStartup(StartupEventArgs e)
         {
-            var sharedDataService = new SharedDataService();
-            var matchingService = new MatchingService();
-            var notificationService = new SmsNotificationService();  // 알림 서비스 인스턴스 생성
-            var csvExportService = new CsvExportService();  // CsvExportService 인스턴스 생성
+            base.OnStartup(e);
 
+            // 1. SQLite DB 및 관리자 테이블 초기화
+            DatabaseInitializer.Initialize();
 
-            var notificationViewModel = new NotificationViewModel(
-                sharedDataService,
-                matchingService,
-                notificationService,
-                csvExportService
-                );  // 주입
-
-            var notificationView = new NotificationView
-            {
-                DataContext = notificationViewModel
-            };
-
-            MainWindow = new MainWindow
-            {
-                Content = notificationView
-            };
-
+            // 2. 로그인 창 실행 (뷰만 열어줌, 로직은 ViewModel에 있음)
+            var loginWindow = new StartWindow();
+            loginWindow.Show();
         }
     }
 }
