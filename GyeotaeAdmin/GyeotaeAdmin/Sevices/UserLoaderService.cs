@@ -80,7 +80,7 @@ namespace GyeotaeAdmin.Sevices
                     {
                         DateTime.TryParse(reader.GetValue(1)?.ToString(), out DateTime birth);
                         int.TryParse(reader.GetValue(3)?.ToString(), out int income);
-
+                        if (reader.GetValue(4)?.ToString() != "1인가구") { continue; }
                         list.Add(new UserModel
                         {
                             Name = reader.GetValue(0)?.ToString(),
