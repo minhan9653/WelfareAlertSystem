@@ -7,25 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
 
-
     <Grid Margin="20">
         <DockPanel LastChildFill="True">
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <Button Content="엑셀 (파일단위) 불러오기"
-                        Command="{Binding LoadFilesCommand}"
-                        Height="40" Width="150" Margin="0,0,10,0"/>
+            <StackPanel Orientation="Vertical">
+                <!-- 버튼 줄 -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Button Content="엑셀 (파일단위) 불러오기"
+                            Command="{Binding LoadFilesCommand}"
+                            Height="40" Width="150" Margin="0,0,10,0"/>
 
-                <Button Content="엑셀 (폴더단위)불러오기"
-                     Command="{Binding LoadFolderCommand}"
-                     Height="40" Width="150" Margin="0,0,10,0"/>
+                    <Button Content="엑셀 (폴더단위)불러오기"
+                            Command="{Binding LoadFolderCommand}"
+                            Height="40" Width="150" Margin="0,0,10,0"/>
 
-                
-                <Button Content="AI 추천 프로그램"
-                        Command="{Binding SuggestProgramsCommand}"
-                        Height="40" Width="180"/>
+                    <Button Content="AI 추천 프로그램"
+                            Command="{Binding SuggestProgramsCommand}"
+                            Height="40" Width="180"/>
+                </StackPanel>
+
+                <!-- 메시지 출력 (아래쪽) -->
+                <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Padding="10" Background="#FFF9F9F9">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  MaxHeight="150">
+                        <TextBlock Text="{Binding RecommendMessage}"
+                   TextWrapping="Wrap"
+                   FontSize="14"
+                   Foreground="DarkSlateBlue" />
+                    </ScrollViewer>
+                </Border>
             </StackPanel>
-
-
         </DockPanel>
     </Grid>
 </UserControl>

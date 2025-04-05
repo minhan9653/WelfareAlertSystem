@@ -21,6 +21,16 @@ namespace GyeotaeAdmin.ViewModels
 {
     public class ParticipationViewModel : ViewModelBase
     {
+        private string _recommendMessage;
+        public string RecommendMessage
+        {
+            get => _recommendMessage;
+            set
+            {
+                _recommendMessage = value;
+                OnPropertyChanged(nameof(RecommendMessage));
+            }
+        }
         public ObservableCollection<object> UsersParticipation { get; set; } = new();
         public ICommand LoadFilesCommand { get; }
         public ICommand LoadFolderCommand { get; }
@@ -51,6 +61,8 @@ namespace GyeotaeAdmin.ViewModels
                 foreach (var item in expanded)
                     UsersParticipation.Add(item);
             }
+            MessageBox.Show($"준비끝.");
+
         }
 
         private void LoadFromFolder()
@@ -98,7 +110,9 @@ namespace GyeotaeAdmin.ViewModels
             var suggestions = MlRecommender.PredictGlobalProgramInterest(mlContext, model, trainingData, 5);
 
             var message = string.Join("\n", suggestions.Select(s => $"{s.itemId} → 예상 관심도: {s.averageScore:F2}"));
-            MessageBox.Show("📋 AI가 제안하는 추천 프로그램:\n\n" + message, "추천 프로그램 제안");
+            //MessageBox.Show("📋 AI가 제안하는 추천 프로그램:\n\n" + message, "추천 프로그램 제안");
+            RecommendMessage = "📋 AI가 제안하는 추천 프로그램:\n\n" + message;
+
         }
     }
 }

@@ -18,15 +18,15 @@
         <!-- 사용자 목록 -->
         <DataGrid Grid.Row="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False" Margin="0,10,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="이름" Binding="{Binding Name}" Width="*" />
-                <DataGridTextColumn Header="생년월일" Binding="{Binding BirthDate, StringFormat=yyyy-MM-dd}" Width="120" />
-                <DataGridTextColumn Header="나이" Binding="{Binding Age}" Width="80" />
-                <DataGridTextColumn Header="주소" Binding="{Binding Address}" Width="150" />
-                <DataGridTextColumn Header="소득" Binding="{Binding Income}" Width="80" />
-                <DataGridTextColumn Header="가구 형태" Binding="{Binding HouseholdType}" Width="100" />
-                <DataGridTextColumn Header="전화번호" Binding="{Binding Phone}" Width="120" />
-                <DataGridTextColumn Header="성별" Binding="{Binding Gender}" Width="120" />
-                <DataGridTextColumn Header="이메일" Binding="{Binding Email}" Width="150" />
+                <DataGridTextColumn Header="이름" Binding="{Binding Name}" Width="auto" />
+                <DataGridTextColumn Header="생년월일" Binding="{Binding BirthDate, StringFormat=yyyy-MM-dd}" Width="auto" />
+                <DataGridTextColumn Header="나이" Binding="{Binding Age}" Width="auto" />
+                <DataGridTextColumn Header="주소" Binding="{Binding Address}" Width="auto" />
+                <DataGridTextColumn Header="소득" Binding="{Binding Income}" Width="auto" />
+                <DataGridTextColumn Header="가구 형태" Binding="{Binding HouseholdType}" Width="auto" />
+                <DataGridTextColumn Header="전화번호" Binding="{Binding Phone}" Width="auto" />
+                <DataGridTextColumn Header="성별" Binding="{Binding Gender}" Width="auto" />
+                <DataGridTextColumn Header="이메일" Binding="{Binding Email}" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

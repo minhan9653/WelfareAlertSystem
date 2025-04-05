@@ -30,8 +30,8 @@ namespace GyeotaeAdmin.ViewModels
 
         private void LoadCsv()
         {
-            if (_sharedData.Programs.Count > 0) return; // 데이터가 이미 있다면 로드 안 함
-
+            if (_sharedData.Programs.Count > 0) _sharedData.Programs.Clear(); // 데이터가 이미 있다면 초기화후 진행
+            if (Programs.Count > 0) Programs.Clear();
             var dialog = new OpenFileDialog
             {
                 Filter = "CSV or Excel Files (*.csv;*.xlsx)|*.csv;*.xlsx",

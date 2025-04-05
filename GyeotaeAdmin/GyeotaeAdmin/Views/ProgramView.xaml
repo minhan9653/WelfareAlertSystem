@@ -18,15 +18,15 @@
         <!-- 프로그램 목록 -->
         <DataGrid Grid.Row="1" ItemsSource="{Binding Programs}" AutoGenerateColumns="False" Margin="0,10,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="프로그램명" Binding="{Binding Title}" Width="*" />
-                <DataGridTextColumn Header="카테고리" Binding="{Binding Category}" Width="100" />
-                <DataGridTextColumn Header="대상 연령" Binding="{Binding TargetAge}" Width="100" />
-                <DataGridTextColumn Header="지역" Binding="{Binding Region}" Width="100" />
-                <DataGridTextColumn Header="시작일" Binding="{Binding StartDate, StringFormat=yyyy-MM-dd}" Width="100" />
-                <DataGridTextColumn Header="종료일" Binding="{Binding EndDate, StringFormat=yyyy-MM-dd}" Width="100" />
-                <DataGridTextColumn Header="신청 방법" Binding="{Binding ApplyMethod}" Width="100" />
-                <DataGridTextColumn Header="신청 링크" Binding="{Binding ApplyLink}" Width="150" />
-                <DataGridTextColumn Header="연락처" Binding="{Binding Contact}" Width="100" />
+                <DataGridTextColumn Header="프로그램명" Binding="{Binding Title}" Width="auto" />
+                <DataGridTextColumn Header="카테고리" Binding="{Binding Category}" Width="auto" />
+                <DataGridTextColumn Header="대상 연령" Binding="{Binding TargetAge}" Width="auto" />
+                <DataGridTextColumn Header="지역" Binding="{Binding Region}" Width="auto" />
+                <DataGridTextColumn Header="시작일" Binding="{Binding StartDate, StringFormat=yyyy-MM-dd}" Width="auto" />
+                <DataGridTextColumn Header="종료일" Binding="{Binding EndDate, StringFormat=yyyy-MM-dd}" Width="auto" />
+                <DataGridTextColumn Header="신청 방법" Binding="{Binding ApplyMethod}" Width="auto" />
+                <DataGridTextColumn Header="신청 링크" Binding="{Binding ApplyLink}" Width="auto" />
+                <DataGridTextColumn Header="연락처" Binding="{Binding Contact}" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

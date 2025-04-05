@@ -30,7 +30,8 @@ namespace GyeotaeAdmin.ViewModels
 
         private void LoadCsv()
         {
-            if (_sharedData.Users.Count > 0) return; // 데이터가 이미 있다면 로드 안 함
+            if (_sharedData.Users.Count > 0) _sharedData.Users.Clear(); // 데이터가 이미 있다면 
+            if (Users.Count > 0) Users.Clear(); 
 
             var dialog = new OpenFileDialog
             {
