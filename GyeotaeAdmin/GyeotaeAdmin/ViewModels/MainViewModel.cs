@@ -79,7 +79,13 @@ namespace GyeotaeAdmin.ViewModels
                 CurrentView = view; 
             });
 
-            ShowReportViewCommand = new RelayCommand(() => CurrentView = "통계/보고서 화면입니다");
+            ShowReportViewCommand = new RelayCommand(() =>
+            {
+                var viewModel = new ReportViewModel(SharedInstance.SharedData);
+                var view = new ReportView { DataContext = viewModel };
+                CurrentView = view;
+            });
+
             ShowSuggestionViewCommand = new RelayCommand(() => CurrentView = "AI 제안 화면입니다");
 
             CurrentView = new TextBlock { Text = "초기 화면입니다" };

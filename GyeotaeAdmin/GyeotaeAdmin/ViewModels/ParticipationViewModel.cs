@@ -33,7 +33,7 @@ namespace GyeotaeAdmin.ViewModels
                 OnPropertyChanged(nameof(RecommendMessage));
             }
         }
-        public ObservableCollection<object> UsersParticipation { get; set; } = new();
+        public ObservableCollection<ParticipationSummary> UsersParticipation { get; set; } = new();
         public ICommand LoadFilesCommand { get; }
         public ICommand LoadFolderCommand { get; }
         public ICommand SuggestProgramsCommand { get; }
@@ -61,8 +61,12 @@ namespace GyeotaeAdmin.ViewModels
                 var expanded = ParticipationTransformer.ToExpandoList(summary);
 
                 UsersParticipation.Clear();
-                foreach (var item in expanded)
+                foreach (var item in summary)
                     UsersParticipation.Add(item);
+
+
+                _sharedData.UsersParticipation.Clear(); // 기존 데이터 초기화
+                _sharedData.UsersParticipation.AddRange(summary);
             }
             MessageBox.Show($"준비끝.");
 
@@ -93,10 +97,14 @@ namespace GyeotaeAdmin.ViewModels
                 var summary = ParticipationLoaderService.TransformToSummary(records);
                 var expanded = ParticipationTransformer.ToExpandoList(summary);
 
-                UsersParticipation.Clear();
-                foreach (var item in expanded)
-                UsersParticipation.Add(item);
 
+
+                UsersParticipation.Clear();
+                foreach (var item in summary)
+                    UsersParticipation.Add(item);
+
+                _sharedData.UsersParticipation.Clear(); // 기존 데이터 초기화
+                _sharedData.UsersParticipation.AddRange(summary);
 
             }
         }

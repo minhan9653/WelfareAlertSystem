@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ML.Trainers;
+using GyeotaeAdmin.Models;
 
 namespace GyeotaeAdmin.ML
 {
@@ -75,18 +76,17 @@ namespace GyeotaeAdmin.ML
             return predictions;
         }
 
-        public static List<RecommendationInput> ConvertToTrainingData(IEnumerable<object> users)
+        public static List<RecommendationInput> ConvertToTrainingData(IEnumerable<ParticipationSummary> users)
         {
             var list = new List<RecommendationInput>();
 
-            foreach (var userObj in users)
+            foreach (var user in users)
             {
-                var dict = (IDictionary<string, object>)userObj;
-                var userId = dict["Phone"]?.ToString();
+                var userId = user.Phone;
 
-                foreach (var kv in dict)
+                foreach (var kv in user.ProgramParticipation)
                 {
-                    if (kv.Key == "Phone" || kv.Key == "Name") continue;
+                    if (kv.Value == null) continue; // null인 경우 제외
 
                     list.Add(new RecommendationInput
                     {

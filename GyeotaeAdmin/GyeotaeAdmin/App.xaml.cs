@@ -12,7 +12,7 @@ namespace GyeotaeAdmin
     /// </summary>
     /// 
     public partial class App : Application
-    {/*
+    {
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -23,7 +23,7 @@ namespace GyeotaeAdmin
             // 2. 로그인 창 실행 (뷰만 열어줌, 로직은 ViewModel에 있음)
             var loginWindow = new StartWindow();
             loginWindow.Show();
-        }*/
+        }
     }
 }
 
