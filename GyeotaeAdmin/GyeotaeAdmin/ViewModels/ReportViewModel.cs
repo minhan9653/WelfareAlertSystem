@@ -21,19 +21,19 @@ namespace GyeotaeAdmin.ViewModels
         public ObservableCollection<NonParticipantEntry> NonParticipants { get; set; } = new();
 
         public ICommand GenerateReportCommand { get; }
-
+        public ICommand ExportToExcelCommand { get; }
         private void GenerateReport()
         {
             GenerateProgramStatistics();
             LoadRecommendationResults();
             CalculateNonParticipants();
         }
+
         public ReportViewModel(SharedDataService sharedData)
         {
             _sharedData = sharedData;
             GenerateReportCommand = new RelayCommand(GenerateReport); // ✅ 이 줄 필수!
-
-
+            ExportToExcelCommand = new RelayCommand(ExportToExcel); // ✅ 이 줄 필수!
         }
 
         private void GenerateProgramStatistics()
@@ -65,12 +65,21 @@ namespace GyeotaeAdmin.ViewModels
 
             NonParticipants.Clear();
             foreach (var entry in data)
-                NonParticipants.Add(entry);
+             NonParticipants.Add(entry);
         }
 
-        // 이후: 저장 기능 추가 예정
+
+
+
+        private void ExportToExcel()
+        {
+            // ViewModel의 ObservableCollection을 그대로 사용하여 데이터 추출
+            var programStatistics = ProgramStatistics.ToList();
+            var recommendationResults = RecommendationSummary.ToList();
+            var nonParticipants = NonParticipants.ToList();
+
+            // 엑셀로 내보내기
+            ReportService.ExportToExcelWithCharts(programStatistics, recommendationResults, nonParticipants);
+        }
     }
-
-
-
 }

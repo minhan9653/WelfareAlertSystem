@@ -13,6 +13,7 @@
     <PackageReference Include="ExcelDataReader" Version="3.7.0" />
     <PackageReference Include="Microsoft.ML" Version="4.0.2" />
     <PackageReference Include="Microsoft.ML.Recommender" Version="0.22.2" />
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
     <PackageReference Include="Twilio" Version="7.9.1" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
