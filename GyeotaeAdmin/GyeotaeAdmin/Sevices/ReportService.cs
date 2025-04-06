@@ -99,9 +99,9 @@ namespace GyeotaeAdmin.Sevices
                 {
                     worksheet.Cell(i + 2, 1).Value = programStatistics[i].ProgramName;
                     worksheet.Cell(i + 2, 2).Value = programStatistics[i].ParticipationCount;
-                    worksheet.Cell(i + 2, 2).Style.NumberFormat.Format = "#,##0"; // 숫자 포맷 (천 단위 구분기호)
+                    worksheet.Cell(i + 2, 2).Style.NumberFormat.Format = "0.0"; // 숫자 포맷 (천 단위 구분기호)
                     worksheet.Cell(i + 2, 3).Value = programStatistics[i].ParticipationRate;
-                    worksheet.Cell(i + 2, 3).Style.NumberFormat.Format = "0.0%"; // 백분율 형식
+                    worksheet.Cell(i + 2, 3).Style.NumberFormat.Format = "0.0"; // 백분율 형식
 
                     // 텍스트 래핑을 설정하여 텍스트가 셀 안에서 줄 바꿈 되도록
                     worksheet.Cell(i + 2, 1).Style.Alignment.WrapText = true;
@@ -147,9 +147,9 @@ namespace GyeotaeAdmin.Sevices
                 {
                     nonParticipantsSheet.Cell(i + 2, 1).Value = nonParticipants[i].ProgramName;
 
-                    // 숫자값을 문자로 변환하여 삽입 (예: 0.75 -> "75%")
+                    // 숫자값을 그대로 삽입 (예: 0.75 -> "75%")
                     nonParticipantsSheet.Cell(i + 2, 2).Value = nonParticipants[i].NonParticipationRate;
-                    nonParticipantsSheet.Cell(i + 2, 2).Style.NumberFormat.Format = "0.0%"; // 백분율 형식으로 설정
+                    nonParticipantsSheet.Cell(i + 2, 2).Style.NumberFormat.Format = "0.0"; // 그냥 값으로 출력 (백분율 형식 X)
                 }
 
                 // 열 너비 자동 조정 (수동으로 너비 설정)
