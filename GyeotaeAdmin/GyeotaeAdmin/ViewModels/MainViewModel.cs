@@ -20,6 +20,7 @@ namespace GyeotaeAdmin.ViewModels
             set => SetProperty(ref _currentView, value);
         }
 
+        public ICommand ClearViewCommand { get; }
         public ICommand ShowUserViewCommand { get; }
         public ICommand ShowProgramViewCommand { get; }
         public ICommand ShowNotificationViewCommand { get; }
@@ -30,6 +31,8 @@ namespace GyeotaeAdmin.ViewModels
 
         public MainViewModel()
         {
+            ClearViewCommand = new RelayCommand(() => CurrentView = null);
+
             ShowUserViewCommand = new RelayCommand(() =>
             {
                 var viewModel = new UserViewModel(
@@ -88,7 +91,6 @@ namespace GyeotaeAdmin.ViewModels
 
             ShowSuggestionViewCommand = new RelayCommand(() => CurrentView = "AI 제안 화면입니다");
 
-            CurrentView = new TextBlock { Text = "초기 화면입니다" };
         }
     }
 }

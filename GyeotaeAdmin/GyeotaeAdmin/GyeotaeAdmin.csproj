@@ -10,10 +10,14 @@
 
   <ItemGroup>
     <None Remove="Images\LoginBackground.jpg" />
+    <None Remove="Images\TeamLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Images\LoginBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TeamLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

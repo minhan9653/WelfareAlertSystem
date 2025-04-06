@@ -7,11 +7,9 @@
         xmlns:vm="clr-namespace:GyeotaeAdmin.ViewModels"
         mc:Ignorable="d"
         Title="MainView"
-        Width="800" Height="450"
-        MinWidth="1000" MinHeight="800"
-        SizeToContent="WidthAndHeight"
-        ResizeMode="CanResize">
-
+        Width="1000" Height="800"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <vm:MainViewModel />
@@ -19,21 +17,163 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- 왼쪽 메뉴 리스트 -->
-        <StackPanel Background="#2c3e50" Grid.Column="0" >
-            <Button Content="① 대상자 관리" Command="{Binding ShowUserViewCommand}" Margin="0,5"/>
-            <Button Content="② 프로그램 관리" Command="{Binding ShowProgramViewCommand}" Margin="0,5"/>
-            <Button Content="③ 추천 및 매칭" Command="{Binding ShowMatchingViewCommand}" Margin="0,5"/>
-            <Button Content="④ 알림 발송" Command="{Binding ShowNotificationViewCommand}" Margin="0,5"/>
-            <Button Content="⑤ 참여 이력" Command="{Binding ShowAttendanceViewCommand}" Margin="0,5"/>
-            <Button Content="⑥ 통계 및 보고서" Command="{Binding ShowReportViewCommand}" Margin="0,5"/>
+        <!-- ✅ 사이드 메뉴 -->
+        <StackPanel Background="#34495e" Grid.Column="0">
+            <StackPanel.Resources>
+                <!-- 버튼 공통 스타일 정의 -->
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                    <ContentPresenter HorizontalAlignment="Left"
+                                                      VerticalAlignment="Center"
+                                                      Margin="10,0"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#2c3e50"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Background="Transparent"
+        BorderThickness="0"
+        Cursor="Hand"
+        Command="{Binding ClearViewCommand}"
+        HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+            Margin="10"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            >
+           <Image Source="/Images/TeamLogo.png"
+           Width="32" Height="32"
+           Margin="0,0,8,0"/>
+                <TextBlock Text="관리자 메뉴"
+               Foreground="White"
+               FontSize="18"
+               FontWeight="Bold"
+               VerticalAlignment="Center"/>
+            </StackPanel>
+            </Button>
+            <!-- 메뉴 버튼 -->
+            <Button Content="① 대상자 관리" Command="{Binding ShowUserViewCommand}" />
+            <Button Content="② 프로그램 관리" Command="{Binding ShowProgramViewCommand}" />
+            <Button Content="③ 추천 및 매칭" Command="{Binding ShowMatchingViewCommand}" />
+            <Button Content="④ 참여 이력" Command="{Binding ShowAttendanceViewCommand}" />
+            <Button Content="⑤ 통계 및 보고서" Command="{Binding ShowReportViewCommand}" />
         </StackPanel>
 
-        <!-- 오른쪽에 선택된 View 표시 -->
-        <ContentControl Grid.Column="1" Content="{Binding CurrentView}" />
+
+
+        <Border Grid.Column="1" Padding="20">
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/TeamLogo.png" Stretch="UniformToFill" Opacity="0.2"/>
+            </Border.Background>
+
+            <!-- 겹치기 위해 Grid로 감쌈 -->
+            <Grid>
+
+                <!-- 바인딩된 실제 컨텐츠 -->
+                <ContentControl Content="{Binding CurrentView}" />
+
+                <!-- ✅ CurrentView가 null일 때만 보일 홈 안내 화면 -->
+                <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <!-- 제목 -->
+                    <TextBlock Text="복지 프로그램 통합 관리 시스템"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#2c3e50"
+                       TextAlignment="Center"
+                       Margin="0,30,0,0"/>
+
+                    <!-- 설명 텍스트 -->
+                    <TextBlock Text="안녕하세요, 관리자님!"
+                       FontSize="18"
+                       FontWeight="SemiBold"
+                       Foreground="#2c3e50"
+                       TextAlignment="Center"
+                       Margin="0,0,0,5"/>
+
+                    <TextBlock Text="이 시스템은 다음 기능을 제공합니다:"
+                       FontSize="14"
+                       Foreground="Gray"
+                       TextAlignment="Center"
+                       Margin="0,0,0,5"/>
+
+                    <TextBlock Text="① 대상자 관리"
+                       FontSize="13"
+                       Foreground="Black"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
+                    <TextBlock Text="② 프로그램 목록 조회"
+                       FontSize="13"
+                       Foreground="Black"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
+                    <TextBlock Text="③ 프로그램 추천 및 알림 전송"
+                       FontSize="13"
+                       Foreground="Black"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
+                    <TextBlock Text="④ 참여자 엑셀 등록후 전체적으로 관심이 높은 프로그램을 예측"
+                       FontSize="13"
+                       Foreground="Black"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
+                    <TextBlock Text="⑤ 통계 및 보고서 작성"
+                       FontSize="13"
+                       Foreground="Black"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+                    <TextBlock FontSize="12"
+                       Foreground="DimGray"
+                       TextAlignment="Center"
+                       Height="487"
+                       Width="544">
+                    좌측 메뉴에서 원하는 기능을 선택해 주세요.
+                    <LineBreak/>
+                    관리자가 조금 더 편한 복지 시스템 알림과 사용자 관리,
+                    <LineBreak/>
+                    현재 실행 중이었던 프로그램에서
+                    <LineBreak/>
+                     어떤 게 미래에 관심도가 높을지를 정해주는 프로그램입니다.
+                     <LineBreak/>
+                     
+                    </TextBlock>
+                    <!-- Style Trigger: CurrentView가 null일 때만 보여짐 -->
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentView}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                </StackPanel>
+
+            </Grid>
+        </Border>
     </Grid>
 </Window>
