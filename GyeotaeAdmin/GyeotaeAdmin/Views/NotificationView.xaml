@@ -15,23 +15,28 @@
 
         <!-- 파일 불러오기 버튼은 제거됨 -->
 
+        
         <!-- 프로그램 선택 -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            
+
+
             <TextBlock Text="프로그램 선택:" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <ComboBox ItemsSource="{Binding Programs}"
                       SelectedItem="{Binding SelectedProgram}"
                       DisplayMemberPath="Title"
-                      Width="300"/>
+                      Width="300"
+                      Margin="0,0,50,0"/>
             <Button Content="알림 전송" Command="{Binding SendNotificationCommand}" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
                     Width="100" Height="30"
-                    Margin="150,0,0,0"/>
+                    Margin="10,0,0,0"
+                    />
             <Button Content="CSV로 내보내기" 
                     Command="{Binding ExportToCsvCommand}" 
                     HorizontalAlignment="Center" VerticalAlignment="Top" 
                     Width="100" Height="30"
                     Margin="15,0,0,0"/>
+
 
 
         </StackPanel>
