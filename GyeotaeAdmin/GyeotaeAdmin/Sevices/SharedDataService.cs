@@ -14,6 +14,8 @@ namespace GyeotaeAdmin.Sevices
 
         public List<RecommendationResult> RecommendationResults { get; set; } = new();
         public List<ParticipationSummary> UsersParticipation { get; set; } = new();
+        public string RecommendMessage { get; set; }
+
 
     }
 }

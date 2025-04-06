@@ -24,15 +24,18 @@ namespace GyeotaeAdmin.ViewModels
         private readonly SharedDataService _sharedData;
 
         private string _recommendMessage;
+
         public string RecommendMessage
         {
-            get => _recommendMessage;
+            get => _sharedData.RecommendMessage; // SharedDataService에서 RecommendMessage 값을 읽기
             set
             {
-                _recommendMessage = value;
+                _sharedData.RecommendMessage = value; // SharedDataService에 값 저장
                 OnPropertyChanged(nameof(RecommendMessage));
             }
         }
+
+
         public ObservableCollection<ParticipationSummary> UsersParticipation { get; set; } = new();
         public ICommand LoadFilesCommand { get; }
         public ICommand LoadFolderCommand { get; }
