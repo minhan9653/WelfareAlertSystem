@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace GyeotaeAdmin.Helpers
 {
-
     public static class PasswordHelper
     {
         public static string HashPassword(string password)
@@ -28,20 +24,41 @@ namespace GyeotaeAdmin.Helpers
             return storedHash == inputHash;
         }
     }
+
     public static class PasswordBoxHelper
     {
-        public static readonly DependencyProperty BoundPassword =
-            DependencyProperty.RegisterAttached("BoundPassword", typeof(string), typeof(PasswordBoxHelper),
+        // 🔧 필드명 수정: BoundPassword → BoundPasswordProperty
+        public static readonly DependencyProperty BoundPasswordProperty =
+            DependencyProperty.RegisterAttached(
+                "BoundPassword",
+                typeof(string),
+                typeof(PasswordBoxHelper),
                 new PropertyMetadata(string.Empty, OnBoundPasswordChanged));
 
         public static string GetBoundPassword(DependencyObject obj)
         {
-            return (string)obj.GetValue(BoundPassword);
+            return (string)obj.GetValue(BoundPasswordProperty);
         }
 
         public static void SetBoundPassword(DependencyObject obj, string value)
         {
-            obj.SetValue(BoundPassword, value);
+            obj.SetValue(BoundPasswordProperty, value);
+        }
+
+        private static readonly DependencyProperty IsUpdatingProperty =
+            DependencyProperty.RegisterAttached(
+                "IsUpdating",
+                typeof(bool),
+                typeof(PasswordBoxHelper));
+
+        private static bool GetIsUpdating(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsUpdatingProperty);
+        }
+
+        private static void SetIsUpdating(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsUpdatingProperty, value);
         }
 
         private static void OnBoundPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -49,19 +66,15 @@ namespace GyeotaeAdmin.Helpers
             if (d is PasswordBox box)
             {
                 box.PasswordChanged -= PasswordChanged;
+
                 if (!GetIsUpdating(box))
                 {
                     box.Password = (string)e.NewValue;
                 }
+
                 box.PasswordChanged += PasswordChanged;
             }
         }
-
-        private static readonly DependencyProperty IsUpdatingProperty =
-            DependencyProperty.RegisterAttached("IsUpdating", typeof(bool), typeof(PasswordBoxHelper));
-
-        private static bool GetIsUpdating(DependencyObject obj) => (bool)obj.GetValue(IsUpdatingProperty);
-        private static void SetIsUpdating(DependencyObject obj, bool value) => obj.SetValue(IsUpdatingProperty, value);
 
         private static void PasswordChanged(object sender, RoutedEventArgs e)
         {
@@ -72,4 +85,3 @@ namespace GyeotaeAdmin.Helpers
         }
     }
 }
-
