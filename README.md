@@ -19,7 +19,7 @@ WPF (.NET) 기반의 관리자용 데스크톱 앱으로,
 
 ## 💻 기술 스택
 - WPF (.NET)
-- MSSQL
+- MLNET
 - MVVM 패턴
 - GitHub / Git
 
