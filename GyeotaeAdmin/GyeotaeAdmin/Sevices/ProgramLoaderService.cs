@@ -77,7 +77,7 @@ namespace GyeotaeAdmin.Sevices
 
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (var reader = ExcelReaderFactory.CreateReader(stream))
             {
                 Dictionary<string, int> headerMap = null;
