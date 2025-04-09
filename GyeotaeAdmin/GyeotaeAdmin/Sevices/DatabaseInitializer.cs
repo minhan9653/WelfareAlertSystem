@@ -32,7 +32,6 @@ namespace GyeotaeAdmin.Sevices
                 // 2. 기본 계정 있는지 확인
                 var checkCmd = new SQLiteCommand("SELECT COUNT(*) FROM AdminUsers WHERE Username = 'admin'", connection);
                 long count = (long)checkCmd.ExecuteScalar();
-                count = 0;
                 if (count == 0)
                 {
                     // 3. 기본 계정 생성
