@@ -17,31 +17,43 @@
         </StackPanel>
         <!-- 참여율 통계 -->
         <TextBlock Text="📊 프로그램 참여율 통계" FontSize="18" FontWeight="Bold" Margin="0 10 0 5"/>
-        <DataGrid ItemsSource="{Binding ProgramStatistics}" AutoGenerateColumns="False" Height="200">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="프로그램명" Binding="{Binding ProgramName}" />
-                <DataGridTextColumn Header="참여자 수" Binding="{Binding ParticipationCount}" />
-                <DataGridTextColumn Header="참여율 (%)" Binding="{Binding ParticipationRate, StringFormat={}{0:F1}}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView ItemsSource="{Binding ProgramStatistics}" Height="200">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Margin="5">
+                        <TextBlock Text="{Binding ProgramName}" Width="auto" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding ParticipationCount, StringFormat='참여자 수: {0}'}" Margin="10,0"/>
+                        <TextBlock Text="{Binding ParticipationRate, StringFormat='참여율: {0:F1}%'}" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-        <!-- AI 추천 -->
+        <!-- 🤖 AI 추천 프로그램 요약 -->
         <TextBlock Text="🤖 AI 추천 프로그램 요약" FontSize="18" FontWeight="Bold" Margin="0 20 0 5"/>
-        <DataGrid ItemsSource="{Binding RecommendationSummary}" AutoGenerateColumns="False" Height="150">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="프로그램명" Binding="{Binding ProgramName}" />
-                <DataGridTextColumn Header="AI 관심도" Binding="{Binding FormattedScore}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView ItemsSource="{Binding RecommendationSummary}" Height="150">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Margin="5">
+                        <TextBlock Text="{Binding ProgramName}" Width="auto" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding FormattedScore, StringFormat='AI 관심도: {0}'}" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-        <!-- 미참여자 목록 -->
+        <!-- ⚠️ 미참여자 수 통계 -->
         <TextBlock Text="⚠️ 미참여자 수 통계" FontSize="18" FontWeight="Bold" Margin="0 20 0 5"/>
-        <DataGrid ItemsSource="{Binding NonParticipants}" AutoGenerateColumns="False" Height="200">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="프로그램명" Binding="{Binding ProgramName}" />
-                <DataGridTextColumn Header="미참여율 (%)" Binding="{Binding NonParticipationRate, StringFormat={}{0:F1}}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView ItemsSource="{Binding NonParticipants}" Height="200">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Margin="5">
+                        <TextBlock Text="{Binding ProgramName}" Width="auto" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding NonParticipationRate, StringFormat='미참여율: {0:F1}%'}" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </StackPanel>
 </UserControl>
