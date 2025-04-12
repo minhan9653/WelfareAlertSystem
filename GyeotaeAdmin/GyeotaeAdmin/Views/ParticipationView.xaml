@@ -14,11 +14,11 @@
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <Button Content="엑셀 (파일단위) 불러오기"
                             Command="{Binding LoadFilesCommand}"
-                            Height="40" Width="150" Margin="0,0,10,0"/>
+                            Height="40" Width="180" Margin="0,0,10,0"/>
 
                     <Button Content="엑셀 (폴더단위)불러오기"
                             Command="{Binding LoadFolderCommand}"
-                            Height="40" Width="150" Margin="0,0,10,0"/>
+                            Height="40" Width="180" Margin="0,0,10,0"/>
 
                     <Button Content="AI 추천 프로그램"
                             Command="{Binding SuggestProgramsCommand}"
