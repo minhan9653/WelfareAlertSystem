@@ -60,27 +60,18 @@
             </Grid.RowDefinitions>
 
             <!-- 🔹 상단: 관리자 메뉴 타이틀 -->
-            <Button Grid.Row="0"
-            Background="Transparent"
-            BorderThickness="0"
-            Cursor="Hand"
-            Command="{Binding ClearViewCommand}"
-            HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal"
-                    Margin="10"
-                    VerticalAlignment="Center"
+            <Button Command="{Binding ClearViewCommand}"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Cursor="Hand"
                     HorizontalAlignment="Center">
-                    <!--<Image Source="/Images/TeamLogo.png"
-                   Width="32" Height="32"
-                   Margin="0,0,8,0"/>-->
-                    <TextBlock Text="관리자 메뉴"
-                       Foreground="White"
-                       FontSize="18"
-                       FontWeight="Bold"
-                       VerticalAlignment="Center"/>
-                </StackPanel>
+                          <TextBlock Text="관리자 메뉴"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="White"  
+                           VerticalAlignment="Center"/>
             </Button>
-
+            
             <!-- 🔹 가운데: 메뉴 버튼들 -->
             <StackPanel Grid.Row="1" Margin="0 20">
                 <Button Content="👤 ① 대상자 관리"
