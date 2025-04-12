@@ -31,10 +31,10 @@
                     Width="100" Height="30"
                     Margin="10,0,0,0"
                     />
-            <Button Content="CSV로 내보내기" 
+            <Button Content="엑셀 내보내기" 
                     Command="{Binding ExportToCsvCommand}" 
                     HorizontalAlignment="Center" VerticalAlignment="Top" 
-                    Width="100" Height="30"
+                    Width="120" Height="30"
                     Margin="15,0,0,0"/>
 
 
