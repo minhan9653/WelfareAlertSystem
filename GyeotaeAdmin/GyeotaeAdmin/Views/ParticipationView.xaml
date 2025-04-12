@@ -23,6 +23,8 @@
                     <Button Content="AI 추천 프로그램"
                             Command="{Binding SuggestProgramsCommand}"
                             Height="40" Width="180"/>
+                    
+                    
                 </StackPanel>
 
                 <!-- 메시지 출력 (아래쪽) -->

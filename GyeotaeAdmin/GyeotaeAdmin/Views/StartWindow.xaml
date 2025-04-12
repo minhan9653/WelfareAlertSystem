@@ -14,7 +14,12 @@
     <Window.Background>
         <ImageBrush ImageSource="/Images/LoginBackground.jpg" Stretch="Fill"/>
     </Window.Background>
-
+    <!-- 🔧 요 부분 수정 -->
+    <Window.InputBindings>
+        <KeyBinding Key="Enter"
+                    Command="{Binding LoginCommand}" />
+    </Window.InputBindings>
+    
     <Border Margin="20" Padding="20" Background="#80F0F8FF" CornerRadius="10" BorderBrush="#80F0F8FF" BorderThickness="1">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -37,6 +42,9 @@
             <TextBlock Text="비밀번호" Grid.Row="1" Margin="0,40,0,5" FontWeight="Bold" FontSize="13" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
             <PasswordBox Grid.Row="3" Height="30" Margin="0,0,0,10"
                          helpers:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+
+
+
 
             <Button Grid.Row="4"
                     Content="로그인"

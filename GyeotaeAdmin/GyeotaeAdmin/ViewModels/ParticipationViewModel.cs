@@ -16,6 +16,8 @@ using Microsoft.ML;
 using GyeotaeAdmin.ML;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using Twilio.TwiML.Voice;
+using System.Windows.Controls;
 
 namespace GyeotaeAdmin.ViewModels
 {
@@ -34,6 +36,8 @@ namespace GyeotaeAdmin.ViewModels
                 OnPropertyChanged(nameof(RecommendMessage));
             }
         }
+
+
 
 
         public ObservableCollection<ParticipationSummary> UsersParticipation { get; set; } = new();
@@ -71,11 +75,11 @@ namespace GyeotaeAdmin.ViewModels
                 _sharedData.UsersParticipation.Clear(); // 기존 데이터 초기화
                 _sharedData.UsersParticipation.AddRange(summary);
             }
-            MessageBox.Show($"준비끝.");
+            MessageBox.Show($"{dialog.FileNames.Length}개의 엑셀 파일을 불러왔습니다.");
 
         }
 
-        private void LoadFromFolder()
+        private async void LoadFromFolder()
         {
             var folderDialog = new CommonOpenFileDialog
             {
@@ -94,7 +98,7 @@ namespace GyeotaeAdmin.ViewModels
                     return;
                 }
 
-                MessageBox.Show($"{files.Length}개의 엑셀 파일을 불러왔습니다.");
+
 
                 var records = ParticipationLoaderService.LoadMultipleFiles(files);
                 var summary = ParticipationLoaderService.TransformToSummary(records);
@@ -109,6 +113,8 @@ namespace GyeotaeAdmin.ViewModels
                 _sharedData.UsersParticipation.Clear(); // 기존 데이터 초기화
                 _sharedData.UsersParticipation.AddRange(summary);
 
+
+                MessageBox.Show($"{files.Length}개의 엑셀 파일을 불러왔습니다.");
             }
         }
 

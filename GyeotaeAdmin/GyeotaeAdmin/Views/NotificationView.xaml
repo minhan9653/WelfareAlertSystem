@@ -46,14 +46,14 @@
                   ItemsSource="{Binding MatchedUsers}"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="이름" Binding="{Binding Name}" Width="100"/>
-                <DataGridTextColumn Header="나이" Binding="{Binding Age}" Width="60"/>
-                <DataGridTextColumn Header="주소" Binding="{Binding Address}" Width="150"/>
-                <DataGridTextColumn Header="가구 형태" Binding="{Binding HouseholdType}" Width="100"/>
-                <DataGridTextColumn Header="전화번호" Binding="{Binding Phone}" Width="120"/>
-                <DataGridTextColumn Header="이메일" Binding="{Binding Email}" Width="150"/>
-                <DataGridCheckBoxColumn Header="Notified" Binding="{Binding IsNotified}" />
-                <DataGridTextColumn Header="Notification Date" Binding="{Binding NotificationDate}" />
+                <DataGridTextColumn Header="이름" Binding="{Binding Name}" Width="auto"/>
+                <DataGridTextColumn Header="나이" Binding="{Binding Age}" Width="auto"/>
+                <DataGridTextColumn Header="주소" Binding="{Binding Address}" Width="auto"/>
+                <DataGridTextColumn Header="가구 형태" Binding="{Binding HouseholdType}" Width="auto"/>
+                <DataGridTextColumn Header="전화번호" Binding="{Binding Phone}" Width="auto"/>
+                <DataGridTextColumn Header="이메일" Binding="{Binding Email}" Width="auto"/>
+                <DataGridCheckBoxColumn Header="전송 확인" Width="auto" Binding="{Binding IsNotified}" />
+                <DataGridTextColumn Header="전송 시간" Width="auto" Binding="{Binding NotificationDate}" />
             </DataGrid.Columns>
 
         </DataGrid>

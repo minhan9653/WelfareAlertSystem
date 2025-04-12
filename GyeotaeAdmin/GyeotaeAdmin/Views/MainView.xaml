@@ -70,9 +70,9 @@
                     Margin="10"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-                    <Image Source="/Images/TeamLogo.png"
+                    <!--<Image Source="/Images/TeamLogo.png"
                    Width="32" Height="32"
-                   Margin="0,0,8,0"/>
+                   Margin="0,0,8,0"/>-->
                     <TextBlock Text="관리자 메뉴"
                        Foreground="White"
                        FontSize="18"
