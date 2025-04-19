@@ -7,8 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
 
-    <Grid Margin="20">
-        <DockPanel LastChildFill="True">
+    <Grid Margin="0,0,0,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Text="🗂 참여 이력" FontSize="20" FontWeight ="Bold"/>
+        </StackPanel>
+        
+        <DockPanel LastChildFill="True" Grid.Row="1" Margin="0,20,0,10">
             <StackPanel Orientation="Vertical">
                 <!-- 버튼 줄 -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">

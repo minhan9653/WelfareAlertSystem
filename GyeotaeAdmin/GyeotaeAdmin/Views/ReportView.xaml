@@ -6,9 +6,20 @@
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="800">
 
-    <StackPanel Margin="20" Orientation="Vertical">
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 10">
+    <Grid Margin="0,0,0,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="20,10">
+            <TextBlock Text="📄 보고서 생성" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
+        
+        <StackPanel Margin="20" Orientation="Vertical" Grid.Row="1" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 10">
             <!-- 보고서 생성 버튼 -->
             <Button Content="📊 보고서 생성" Command="{Binding GenerateReportCommand}" Padding="10,5" Margin="0,0,10,0"/>
             <!-- 엑셀 내보내기 버튼 -->
@@ -41,4 +52,5 @@
         </DataGrid>
 
     </StackPanel>
+        </Grid>
 </UserControl>
