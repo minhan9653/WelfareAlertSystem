@@ -63,6 +63,8 @@ namespace GyeotaeAdmin.ViewModels
 
             if (dialog.ShowDialog() == true)
             {
+                MessageBox.Show("파일을 불러오시겠습니까?\n잠시만 기다려 주세요.\n완료되면 알림이 표시됩니다.");
+
                 var records = ParticipationLoaderService.LoadMultipleFiles(dialog.FileNames);
                 var summary = ParticipationLoaderService.TransformToSummary(records);
                 var expanded = ParticipationTransformer.ToExpandoList(summary);
@@ -87,7 +89,9 @@ namespace GyeotaeAdmin.ViewModels
             };
 
             if (folderDialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
+            {                
+                
+                MessageBox.Show("파일을 불러오는중입니다.\n잠시만 기다려 주세요.\n완료되면 알림이 표시됩니다.");
                 var folderPath = folderDialog.FileName;
                 // 중복 제거: Distinct() 사용 (하위 폴더 검색은 하지 않음)
                 var files = Directory.GetFiles(folderPath, "*.xlsx").Distinct().ToArray();

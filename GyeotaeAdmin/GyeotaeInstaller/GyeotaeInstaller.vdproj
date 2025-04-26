@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2560DEB5BFDA4B9BBC5236C08CA11DA4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_33BCB1D4A0004E3593FC6EBDD87B6F5E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,12 +63,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8C236E897BB2492FA631A71AD8233C5F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_B4DE7C9969A04A6B99D877A8ECB605DA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -91,6 +91,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -107,6 +115,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -144,6 +160,26 @@
             "TargetName" = "8:SentUsers3.xlsx"
             "Tag" = "8:"
             "Folder" = "8:_4A365C8933F64C1AA2579D6CC6A14117"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2560DEB5BFDA4B9BBC5236C08CA11DA4"
+            {
+            "SourcePath" = "8:C:\\Users\\USER\\OneDrive\\바탕 화면\\실행방법_안내.txt"
+            "TargetName" = "8:실행방법_안내.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_59BEA1B77BAF4AF79B182A99F5DC181D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -244,26 +280,6 @@
             "TargetName" = "8:programsample.xlsx"
             "Tag" = "8:"
             "Folder" = "8:_A9C846D1044E4725A0B745914CA6D8CE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8C236E897BB2492FA631A71AD8233C5F"
-            {
-            "SourcePath" = "8:C:\\Users\\USER\\OneDrive\\바탕 화면\\실행방법_안내.txt"
-            "TargetName" = "8:실행방법_안내.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_59BEA1B77BAF4AF79B182A99F5DC181D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -932,7 +948,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3D5280E121FB430195E94E40BCD9BE1D"
             {
-            "SourcePath" = "8:..\\GyeotaeAdmin\\obj\\Release\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\GyeotaeAdmin\\obj\\Debug\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_99C455BAA0C54CAE9E71D01B414504C9"
